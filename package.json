@@ -1,0 +1,13 @@
+{
+  "name": "elluzion-ai-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Elluzion AI responsive Three.js website",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node scripts/serve.cjs",
+    "start": "node scripts/serve.cjs",
+    "test": "node tests/inquiries.mjs"
+  }
+}

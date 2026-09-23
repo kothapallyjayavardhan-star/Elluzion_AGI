@@ -1,0 +1,104 @@
+/* Layout rules shared by the walkthrough and its fixed controls. */
+html{scroll-padding-top:130px;scroll-padding-bottom:110px}
+body{overflow-wrap:break-word}
+header{gap:24px}
+.mobile-menu{display:none}
+.copy{width:100%;max-width:min(46%,620px)}
+.copy h1,.copy h2{font-size:clamp(40px,4.5vw,76px)}
+section[data-step]{padding-bottom:160px}
+.business-section{padding-right:50%!important}
+.business-section h2{font-size:clamp(38px,4vw,64px)}
+input,textarea,select{font-size:16px;min-height:48px}
+.solid-button,.outline-button,.header-link,.next,.consumer-link{min-height:44px}
+.scene-caption button{width:44px;height:44px;flex-shrink:0}
+.ask-bar{left:5%;transform:none;width:min(440px,44%);bottom:max(20px,env(safe-area-inset-bottom))}
+.chapter-nav,.business-mode .chapter-nav{bottom:28px;left:auto;right:5%;width:340px;padding:8px 14px;gap:12px}
+.chapter-nav a{min-height:44px;justify-content:center}
+.tour-hint{bottom:110px}
+.traction-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%}
+.traction-mini>div{min-width:0;align-content:start}
+.business-footer{padding-bottom:140px}
+@media(max-width:1100px){
+ .top-links{display:none}
+ .header-link{margin-left:auto;display:flex;align-items:center;white-space:nowrap}
+ .mobile-menu{display:block;position:relative}
+ .mobile-menu summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;padding:8px 12px;border:1px solid #7898aa66;border-radius:8px;font-size:13px}
+ .mobile-menu summary::-webkit-details-marker{display:none}
+ .mobile-menu[open] summary{background:#203541}
+ .mobile-menu nav{position:absolute;right:0;top:52px;width:230px;display:grid;padding:10px;background:#0c1a25;border:1px solid #7898aa66;border-radius:12px;box-shadow:0 16px 40px #0008}
+ .mobile-menu nav a{padding:10px 14px;min-height:44px;font-size:14px;border-radius:6px}
+ .mobile-menu nav a:hover{background:#203541}
+ .chapter-nav,.business-mode .chapter-nav{display:none}
+ .ask-bar{left:50%;transform:translateX(-50%);width:min(480px,calc(100% - 32px))}
+ .copy{max-width:52%}
+ .business-section{padding-right:44%!important}
+ .scene-caption{font-size:8px}
+}
+@media(max-width:800px){
+ header,.business-mode header{height:76px;padding:0 5%;gap:12px;background:#08121aee}
+ .logo{font-size:24px;white-space:nowrap}
+ .logo>span:first-child{font-size:30px}
+ .logo .ai{margin-top:14px}
+ .header-link{font-size:12px}
+ .scene-caption,.business-mode .scene-caption{top:84px;left:5%;right:5%;width:auto;gap:10px;font-size:8px}
+ .scene-caption #scene-label{max-width:none;flex:1}
+ .scene-caption button{margin-left:auto}
+ #scene:after{background:linear-gradient(0deg,#070e16f7 8%,#070e16cf 48%,#070e1615 85%)}
+ section[data-step]{min-height:110svh;padding:clamp(250px,38svh,390px) 6% 145px;align-items:flex-start;justify-content:center}
+ .copy{max-width:600px;width:100%;background:none!important}
+ .copy h1,.copy h2{font-size:clamp(36px,6.7vw,54px);max-width:570px;margin-bottom:22px}
+ .copy>p{font-size:16px;max-width:520px;line-height:1.75}
+ .copy .eyebrow{font-size:10px;line-height:1.6;margin-bottom:18px}
+ .hero-actions{gap:10px;margin:20px 0}
+ .solid-button,.outline-button{font-size:13px;padding:12px 16px}
+ .traction-mini{max-width:480px;margin-top:20px;padding:18px 0 0}
+ .traction-mini strong{font-size:28px}
+ .traction-mini span{font-size:11px}
+ .copy>p.data-note{font-size:11px;padding:0}
+ .stage-label{font-size:9px}
+ .pipeline{max-width:520px;background:#08131dcc;padding:12px 18px}
+ .pipeline small{font-size:14px}
+ .pipeline strong{font-size:16px}
+ .pipeline li{padding:12px 0}
+ .business-section{padding:clamp(220px,32svh,330px) 6% 145px!important;min-height:110svh!important;gap:24px}
+ .business-section>div,.business-section>form{max-width:600px}
+ .business-section h2{font-size:clamp(36px,6.7vw,54px)}
+ .business-section p{font-size:16px}
+ .business-section .section-title{background:transparent;padding:0;max-width:600px}
+ .faq summary{min-height:44px;display:flex;align-items:center;font-size:15px}
+ .faq details p{font-size:14px}
+ .contact{min-height:0!important}
+ .contact form{max-width:600px;padding:22px}
+ .form-row{grid-template-columns:1fr 1fr}
+ .business-section>div+div,.business-section form{margin-top:0}
+ .concept-note{position:static;margin-top:24px;max-width:520px}
+ section#vision{display:flex;flex-direction:column;align-items:flex-start}
+ .tour-hint{display:none}
+ .business-footer{padding:35px 6% 140px}
+ .business-footer nav{gap:6px 20px}
+ .business-footer nav a{display:flex;align-items:center;min-height:44px}
+}
+@media(max-width:480px){
+ header,.business-mode header{gap:8px;padding:0 4%}
+ .logo{font-size:21px;gap:5px}.logo>span:first-child{font-size:26px}
+ .logo .ai{font-size:8px;margin-top:12px}
+ .header-link{font-size:11px}
+ .mobile-menu summary{font-size:12px;padding:8px 10px}
+ .scene-caption,.business-mode .scene-caption{font-size:7px;gap:7px}
+ section[data-step]{padding-top:clamp(240px,34svh,310px)}
+ .copy h1,.copy h2,.business-section h2{font-size:clamp(34px,9vw,43px)}
+ .hero-actions{display:grid;grid-template-columns:1fr;width:100%;max-width:360px}
+ .traction-mini{gap:10px}.traction-mini strong{font-size:25px}
+ .traction-mini span{font-size:10px;line-height:1.5}
+ .form-row{grid-template-columns:1fr}
+ .contact form{padding:18px}
+ .ask-bar{padding:11px 13px;gap:11px}.ask-label{font-size:14px}.ask-label>span{font-size:10px}
+}
+@media(max-height:500px) and (orientation:landscape){
+ .scene-caption,.business-mode .scene-caption{display:none}
+ section[data-step],.business-section{padding-top:115px!important;min-height:100svh!important}
+ .ask-label>span{display:none}.ask-bar{padding:8px 12px;width:340px;bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.pilot-questions,.product-status{border-left:2px solid var(--accent);padding:12px 18px;margin-top:24px;background:#08131dcc;max-width:520px}.pilot-questions ul{margin:12px 0;padding-left:18px;font-size:14px;color:#b4c7ce}.pilot-questions li+li{margin-top:7px}.product-status p{font-size:14px;line-height:1.7;color:#b4c7ce}.product-status strong{font-size:18px;font-weight:500}.pilot-questions .stage-label,.product-status .stage-label{margin-top:0}.ask-label{font-size:14px}@media(max-width:380px){.ask-label{font-size:12px}}

@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {saveInquiry,validateInquiry,publicConnection,connectionReady} from '../website/supabase-inquiries.js';
+const config={url:'https://example.supabase.co',publishableKey:'sb_publishable_test'};
+const input={id:'12345678-1234-4234-8234-123456789abc',track:'Offline retailer',full_name:' Test ',email:'test@example.com',business:'Demo store',message:'Pilot inquiry'};
+assert.equal(connectionReady(),false);
+assert.equal(validateInquiry(input).full_name,'Test');
+assert.throws(()=>validateInquiry({...input,email:'bad'}));
+assert.throws(()=>validateInquiry({...input,message:'x'.repeat(1501)}));
+assert.throws(()=>publicConnection({...config,publishableKey:'sb_secret_private'}));
+const jwt='x.'+Buffer.from(JSON.stringify({role:'service_role'})).toString('base64url')+'.x';
+assert.throws(()=>publicConnection({...config,publishableKey:jwt}));
+let sent;
+assert.deepEqual(await saveInquiry(input,{config,fetcher:async(url,opts)=>{sent={url,opts};return {ok:true}}}),{saved:true});
+assert.equal(sent.url,'https://example.supabase.co/rest/v1/elluzion_website_inquiries');
+assert.equal(sent.opts.headers.Prefer,'return=minimal');
+assert.equal(JSON.parse(sent.opts.body).contact_requested,true);
+assert.equal('status' in JSON.parse(sent.opts.body),false);
+assert.deepEqual(await saveInquiry(input,{config,fetcher:async()=>({ok:false,status:409,json:async()=>({code:'23505',message:'duplicate key violates unique constraint "elluzion_website_inquiries_pkey"'})})}),{saved:true,duplicate:true});
+await assert.rejects(saveInquiry(input,{config,fetcher:async()=>({ok:false,status:403})}),/couldn’t save/);
+await assert.rejects(saveInquiry(input,{config,fetcher:async()=>{throw new TypeError('network')}}),/Connection interrupted/);
+await assert.rejects(saveInquiry(input,{config,fetcher:async()=>({ok:false,status:409,json:async()=>({code:'23505',message:'other constraint'})})}),/couldn’t save/);
+console.log('Passed: validation, secret-key rejection, insert-only request, duplicate retry, access-denied and network errors. No live Supabase calls made.');
+
