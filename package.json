@@ -4,10 +4,15 @@
   "private": true,
   "type": "module",
   "description": "Elluzion AI responsive Three.js website",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "node scripts/serve.cjs",
     "start": "node scripts/serve.cjs",
     "test": "node tests/inquiries.mjs"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
   }
 }
